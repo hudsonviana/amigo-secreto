@@ -20,3 +20,19 @@ export const login = (req, res) => {
   res.json({ token: authService.createToken() });
   // Retorno da requisição
 };
+
+export const validate = (req, res, next) => {
+  if (!req.headers.authorization) {
+    return res.status(403).json({ error: 'Acesso negado.' });
+  }
+
+  const token = req.headers.authorization.split(' ')[1];
+  if (!authService.validateToken(token)) {
+    return res.status(403).json({ error: 'Acesso negado.' });
+  }
+
+  next();
+};
+
+// 2:15:47
+// https://www.youtube.com/watch?v=mKa1MuB1HMk&t=5541s
