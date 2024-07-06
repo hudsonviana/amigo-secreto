@@ -33,6 +33,3 @@ export const validate = (req, res, next) => {
 
   next();
 };
-
-// 3:02:43
-// https://www.youtube.com/watch?v=mKa1MuB1HMk
