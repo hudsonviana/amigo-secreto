@@ -44,3 +44,11 @@ export const update = async ({ id, id_event = undefined }, data) => {
     return false;
   }
 };
+
+export const remove = async ({ id, id_event = undefined }) => {
+  try {
+    return await prisma.eventGroup.delete({ where: { id, id_event } });
+  } catch (error) {
+    return false;
+  }
+};
