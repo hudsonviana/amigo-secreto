@@ -25,3 +25,11 @@ export const add = async (data) => {
     return false;
   }
 };
+
+export const update = async (data, id) => {
+  try {
+    return await prisma.event.update({ data: data, where: { id: id } });
+  } catch (error) {
+    return false;
+  }
+};
