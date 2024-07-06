@@ -47,17 +47,27 @@ export const updateEvent = async (req, res) => {
 
   if (!body.success) return res.json({ error: 'Dados inválidos.' });
 
-  const updateEvent = await eventsService.update(body.data, parseInt(id));
+  const updatedEvent = await eventsService.update(body.data, parseInt(id));
 
-  if (updateEvent) {
-    if (updateEvent.status) {
+  if (updatedEvent) {
+    if (updatedEvent.status) {
       // TODO: Fazer o sorteio
     } else {
       // TODO: Limpar o sorteio
     }
 
-    return res.json({ event: updateEvent });
+    return res.json({ event: updatedEvent });
   }
+
+  res.json({ error: 'Ocorreu um erro.' });
+};
+
+export const deleteEvent = async (req, res) => {
+  const { id } = req.params;
+
+  const deletedEvent = await eventsService.remove(parseInt(id));
+
+  if (deletedEvent) return res.json({ event: deletedEvent });
 
   res.json({ error: 'Ocorreu um erro.' });
 };

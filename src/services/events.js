@@ -33,3 +33,11 @@ export const update = async (data, id) => {
     return false;
   }
 };
+
+export const remove = async (id) => {
+  try {
+    return await prisma.event.delete({ where: { id: id } });
+  } catch (error) {
+    return false;
+  }
+};
