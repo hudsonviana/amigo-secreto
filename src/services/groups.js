@@ -9,3 +9,11 @@ export const getAll = async (id_event) => {
     return false;
   }
 };
+
+export const getOne = async ({ id, id_event = undefined }) => {
+  try {
+    return await prisma.eventGroup.findFirst({ where: { id, id_event } });
+  } catch (error) {
+    return false;
+  }
+};
