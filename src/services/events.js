@@ -17,3 +17,11 @@ export const getOne = async (id) => {
     return false;
   }
 };
+
+export const add = async (data) => {
+  try {
+    return await prisma.event.create({ data });
+  } catch (error) {
+    return false;
+  }
+};
