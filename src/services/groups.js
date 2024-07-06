@@ -33,3 +33,14 @@ export const add = async (data) => {
     return false;
   }
 };
+
+export const update = async ({ id, id_event = undefined }, data) => {
+  try {
+    return await prisma.eventGroup.update({
+      where: { id, id_event },
+      data: data,
+    });
+  } catch (error) {
+    return false;
+  }
+};
