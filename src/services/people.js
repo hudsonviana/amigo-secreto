@@ -45,3 +45,12 @@ export const update = async ({ id, id_event, id_group }, data) => {
     return false;
   }
 };
+
+export const remove = async ({ id, id_event, id_group }) => {
+  try {
+    if (!id) return false;
+    return await prisma.eventPeople.delete({ where: { id, id_event, id_group } });
+  } catch (error) {
+    return false;
+  }
+};
