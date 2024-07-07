@@ -2,6 +2,7 @@ import { Router } from 'express';
 import * as auth from '../controllers/auth.js';
 import * as events from '../controllers/events.js';
 import * as groups from '../controllers/groups.js';
+import * as people from '../controllers/people.js';
 
 const router = Router();
 
@@ -20,7 +21,9 @@ router.post('/events/:id_event/groups', auth.validate, groups.addGroup);
 router.put('/events/:id_event/groups/:id', auth.validate, groups.updateGroup);
 router.delete('/events/:id_event/groups/:id', auth.validate, groups.deleteGroup);
 
+router.get('/events/:id_event/groups/:id_group/people', auth.validate, people.getAll);
+
 export default router;
 
-// 3:02:43
+// 
 // https://www.youtube.com/watch?v=mKa1MuB1HMk
