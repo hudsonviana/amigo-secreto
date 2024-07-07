@@ -36,3 +36,12 @@ export const add = async (data) => {
     return false;
   }
 };
+
+export const update = async ({ id, id_event, id_group }, data) => {
+  try {
+    if (!id_group) return false;
+    return await prisma.eventPeople.updateMany({ where: { id, id_event, id_group }, data });
+  } catch (error) {
+    return false;
+  }
+};
